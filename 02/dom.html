@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div2>
+    <div id="div1">
+        안녕하시오
+        <button id="btn1"> 클릭클릭클릭 </button>
+    </div>
+<div2 id ="div2"></div2>
+<div3 id ="div2"></div3>
+
+   
+   <script>
+    /*    let div1 = document.querySelector('#div1');
+        div1.innerHTML ='바꿈'
+        div1.onclick = function(){
+            div1.innerHTML ='바꿈 2'
+        }*/
+
+let btn1 = document.querySelector('#btn1');
+let cnt = 0;
+btn1.onclick = function(){
+    btn1.innerHTML = (++cnt) + '번';
+    document.querySelector('#div2').innerHTML ='<b>안녕</b>'
+    document.querySelector('#div2').innerHTML ='<b>안녕</b>'
+}
+
+    </script>
+</body>
+</html>
