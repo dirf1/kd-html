@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form onsubmit="return check()">
+    <input type="text" id="id" placeholder="아이디"> <br>
+    <input type="password" id="pwd" placeholder="비밀번호"> <br>
+    <input type="text" id="name" placeholder="이름"> <br>
+    <input type="text" id="phone" placeholder="휴대번호" oninput="this.value = this.value.replace(/[^0-9]/g, '')"> <br>
+    
+    <h3>해당되는 성별을 체크해주세요</h3>
+    <input type="radio" id="no" name="trans">
+    <label for="no">해당 없음</label>
+
+    <input type="radio" id="m" name="trans">
+    <label for="m">남자</label>
+
+    <input type="radio" id="f" name="trans">
+    <label for="f">여자</label>
+    
+    <button>회원가입</button>
+    
+    <script>
+        function check(){
+            const id = document.querySelector('#id');
+            const pwd = document.querySelector('#pwd');
+            const name = document.querySelector('#name');
+            const phone = document.querySelector('#phone');
+            const gender = document.querySelector('input[name="trans"]:checked');
+            
+            if(id.value.trim().length<4){
+                alert('아이디는 4글자 이상으로 입력해주세요');
+                id.focus();
+                return false;
+            }
+            if(pwd.value.trim().length<4){
+                alert('비밀번호는 4글자 이상으로 입력해주세요');
+                pwd.value = '';
+                pwd.focus();
+                return false;
+            }
+            if(name.value.trim().length<2){
+                alert('이름을 입력해주세요 최소 2글자 입니다.');
+                name.focus();
+                return false;
+            }
+            if(phone.value.trim().length !== 11){
+                alert('휴대번호를 11자로 입력해주세요');
+                phone.focus();
+                return false;
+            }
+            if(!gender){
+                alert('성별을 선택해주세요');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</form>
+</body>
+</html>

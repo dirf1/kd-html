@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form onsubmit="return check()">
+    <input type="text" id="name" placeholder="이름"> <br>
+    <input type="text" id="id" placeholder="아이디"> <br>
+    <input type="password" id="pwd" placeholder="비밀번호"> <br>
+    <input type="text" id="pn" placeholder="휴대번호"> <br>
+    <button>로그인</button>
+    <script>
+        function check(){
+            const name = document.querySelector('#name');
+            const id = document.querySelector('#id');
+            const pwd = document.querySelector('#pwd');
+            const pn = document.querySelector('#pn');
+            if(name.value.trim().length<2){
+                alert('이름은 2글자 이상으로 입력해주세요');
+                name.focus();
+                name.value = '';
+                return false;
+            }
+            if(id.value.trim().length<4){
+                alert('아이디는 4글자 이상으로 입력해주세요');
+                id.focus();
+                return false;
+            }
+            if(pwd.value.trim().length<4){
+                alert('비밀번호는 4글자 이상으로 입력해주세요');
+                pwd.value = '';
+                pwd.focus();
+                return false;
+            }
+            if(pn.value.trim().length<11){
+                alert('휴대번호는 11글자 이상으로 입력해주세요');
+                pn.value = '';
+                pn.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</form>
+</body>
+</html>

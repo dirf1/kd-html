@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>title</title>
+<link rel="stylesheet" href="linkToCSS" />
+<style>
+#clock {
+font-size: 24px;
+font-weight: bold;
+text-align: center;
+margin-top: 50px;
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
+}
+
+#timer {
+text-align: center;
+margin-top: 20px;
+}
+
+#startTimer {
+display: block;
+margin: 20px auto;
+}
+
+#alarm {
+display: block;
+margin: 20px auto;
+text-align: center;
+}
+
+body {
+background-color: skyblue; /* 하늘색으로 수정 */
+}
+</style>
+</head>
+<body>
+<div id="clock"></div>
+<div id="timer">
+
+<input type="text" placeholder="알람을 초 단위로 입력해보세요" />
+<button onclick="startTimer(this)" id="startTimer">시작</button>
+
+</div>
+
+<div id="alarm" style="display: none">
+<audio controls src="/bgm/ring.wav"></audio>
+</div>
+
+<script>
+function displayClock() {
+const date = new Date();
+const hours = date.getHours().toString().padStart(2, '0');
+const minutes = date.getMinutes().toString().padStart(2, '0');
+const seconds = date.getSeconds().toString().padStart(2, '0');
+const time = `${hours}:${minutes}:${seconds}`;
+const clock = document.querySelector('#clock');
+clock.textContent = time;
+
+// Random text color
+const randomTextColor = getRandomPastelColor();
+clock.style.color = randomTextColor;
+
+// Fade in animation
+clock.style.opacity = 1;
+}
+
+function getRandomPastelColor() {
+const hue = Math.floor(Math.random() * 360);
+const pastelColor = `hsl(${hue}, 70%, 80%)`;
+return pastelColor;
+}
+
+function startTimer(btn){
+if(btn.innerText==='시작'){
+const timer = parseInt(document.querySelector('#timer input').value) * 1000;
+setTimeout(function(){
+document.querySelector('#alarm').style.display = 'block'; // 오디오 플레이어를 보이도록 수정
+document.querySelector('#alarm audio').play();
+btn.innerText = '알람끄기';
+},timer);
+}else{
+document.querySelector('#alarm audio').pause();
+btn.innerText = '시작';
+}
+}
+
+setInterval(displayClock, 1000);
+
+
+
+
+
+<form onsubmit="return check()"">
+    <input type="text" id="id" placeholder="아이디"> <br>
+    <input type="password" id="id" placeholder="비밀번호"> <br>
+    <button>로그인</button>
+    <script>
+        function check(){
+            return false;
+        }
+        
+    </script>
+</script>
+</body>
+</html>
